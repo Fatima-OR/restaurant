@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Soleil d'Été - Restaurant Estival</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header Navigation -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Le Soleil d'Été</h1>
+                        <p>Restaurant Estival</p>
+                    </div>
+                </div>
+                
+                <nav class="nav-menu">
+                    <button class="nav-btn active" data-view="home">Accueil</button>
+                    <button class="nav-btn" data-view="menu">Menu</button>
+                    <button class="nav-btn" data-view="admin">Gestion</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home View -->
+            <section id="home-view" class="view active">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h2 class="hero-title">Saveurs Estivales Ensoleillées</h2>
+                        <p class="hero-subtitle">Découvrez nos délices frais et colorés dans une ambiance estivale</p>
+                        <button class="cta-button" id="exploreMenu">Explorer le Menu</button>
+                    </div>
+                    <div class="hero-decoration">
+                        <div class="floating-element"></div>
+                        <div class="floating-element"></div>
+                        <div class="floating-element"></div>
+                    </div>
+                </div>
+
+                <div class="featured-dishes">
+                    <h3 class="section-title">Nos Spécialités Estivales</h3>
+                    <div class="dishes-grid" id="featuredDishes">
+                        <!-- Featured dishes will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu View -->
+            <section id="menu-view" class="view">
+                <div class="menu-header">
+                    <h2 class="page-title">Notre Menu Estival</h2>
+                    <div class="category-filters">
+                        <button class="filter-btn active" data-category="all">Tous</button>
+                        <button class="filter-btn" data-category="entrees">Entrées</button>
+                        <button class="filter-btn" data-category="plats">Plats</button>
+                        <button class="filter-btn" data-category="desserts">Desserts</button>
+                    </div>
+                </div>
+                
+                <div class="menu-grid" id="menuGrid">
+                    <!-- Menu items will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Admin View -->
+            <section id="admin-view" class="view">
+                <div class="admin-header">
+                    <h2 class="page-title">Gestion du Menu</h2>
+                    <button class="add-dish-btn" id="addDishBtn">Ajouter un Plat</button>
+                </div>
+                
+                <div class="admin-grid" id="adminGrid">
+                    <!-- Admin items will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal for Adding/Editing Dishes -->
+        <div id="dishModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Ajouter un Plat</h3>
+                    <button class="close-btn" id="closeModal">&times;</button>
+                </div>
+                
+                <form id="dishForm" class="dish-form">
+                    <input type="hidden" id="dishId">
+                    
+                    <div class="form-group">
+                        <label for="dishName">Nom du Plat</label>
+                        <input type="text" id="dishName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dishDescription">Description</label>
+                        <textarea id="dishDescription" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dishPrice">Prix (€)</label>
+                            <input type="number" id="dishPrice" step="0.01" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dishCategory">Catégorie</label>
+                            <select id="dishCategory" required>
+                                <option value="entrees">Entrées</option>
+                                <option value="plats">Plats</option>
+                                <option value="desserts">Desserts</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dishImage">URL de l'Image</label>
+                        <input type="url" id="dishImage" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn" id="cancelBtn">Annuler</button>
+                        <button type="submit" class="save-btn">Sauvegarder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Notification Toast -->
+        <div id="toast" class="toast">
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="resturant.js"></script>
+</body>
+</html>
